@@ -17,6 +17,10 @@ namespace Pet_shop_online.Controllers
             var products = db.Products.Include("Category").Include("Animal");
          
             ViewBag.Products = products;
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+            }
             return View();
         }
 
