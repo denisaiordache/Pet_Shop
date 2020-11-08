@@ -98,6 +98,7 @@ namespace Pet_shop_online.Controllers
             Product product = db.Products.Find(id);
             ViewBag.Product = product;
             ViewBag.Category = product.Category;
+            ViewBag.Animal = product.Animal;
 
             return View();
         }
