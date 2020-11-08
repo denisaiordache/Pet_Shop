@@ -1,0 +1,38 @@
+﻿@model Pet_shop_online.Models.Product
+
+@{
+    ViewBag.Titlu = "New";
+}
+<h2>Adaugare produs</h2>
+<form method="post" action="/Products/New">
+    @Html.Label("ProductName", "Denumire produs")
+    <br />
+    @Html.TextBox("ProductName", null, new { @class = "form-control" })
+    <br /><br />
+
+    @Html.Label("Description", "Descriere produs")
+    <br />
+    @Html.TextBox("Description", null, new { @class = "form-control" })
+    <br /><br />
+
+    @Html.Label("Price", "Pret produs")
+    <br />
+    @Html.TextBox("Price",0, new { @class = "form-control" })
+    <br /><br />
+
+    @Html.Label("Stock", "Cantitate adaugata")
+    <br />
+    @Html.TextBox("Stock",0,new { @class = "form-control" })
+    <br /><br />
+
+
+    @Html.Label("Selectati categoria")
+    @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.Categories, "Value", "Text"), "Selectati categoria", new { @class = "form-control" })
+    <br /> <br />
+    @Html.Label("Selectati animalul pentru care este destinat produsul")
+    @Html.DropDownListFor(m => m.AnimalID, new SelectList(Model.Animals, "Value", "Text"), "Selectati animalul", new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-success" type="submit">Adauga produs</button>
+</form>
+

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Afisare Produs</h2>
+<br />
+<a href="/Products/Index">Inapoi la produse</a>
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Product.ProductName</div>
+    <div class="panel-body">
+        Descriere produs: <strong>@ViewBag.Product.Description</strong>
+        <br />
+        <span class="label label-success">@ViewBag.Product.Date</span>
+        <br />
+        <i class="glyphicon glyphicon-globe"></i> @ViewBag.Category.CategoryName
+        <br />
+        <hr>
+        <a class="btn btn-success pull-left" href="/Products/Edit/@ViewBag.Product.ProductID">Modifica produs</a>
+        <form method="post" action="/Products/Delete/@ViewBag.Product.ProductID">
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+            <button class="btn btn-danger pull-right" type="submit">Elimina produs</button>
+        </form>
+    </div>
+</div>
+

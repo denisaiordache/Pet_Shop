@@ -1,0 +1,47 @@
+﻿
+@model Pet_shop_online.Models.Product
+
+
+
+<form method="post" action="/Products/Edit/@Model.ProductID">
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.Hidden("ProductID");
+
+    @Html.Label("ProductName", "Denumire Produs")
+    <br />
+    @Html.Editor("ProductName")
+    <br /><br />
+
+    @Html.Label("Description", "Descriere produs")
+    <br />
+    @Html.EditorFor(m => m.Description)
+    <br /><br />
+    @Html.Hidden("Date")
+
+    @Html.Label("Price", "Pret produs")
+    <br />
+    @Html.EditorFor(m => m.Price)
+    <br /><br />
+
+    @Html.Label("Stock", "Cantitate produs")
+    <br />
+    @Html.EditorFor(m => m.Stock)
+    <br /><br />
+
+    @Html.Label("Selectati categoria")
+
+    @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.Categories, "Value", "Text"),
+    "Selectati categoria", new { @class = "form-control" })
+    <br />
+
+
+    @Html.DropDownListFor(m => m.AnimalID, new SelectList(Model.Animals, "Value", "Text"),
+    "Selectati animalul caruia ii este destinat produsul", new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-success" type="submit">Modifica produs</button>
+</form>
+
+
+

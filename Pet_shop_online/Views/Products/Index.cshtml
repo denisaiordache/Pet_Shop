@@ -1,0 +1,21 @@
+﻿
+@foreach (var product in ViewBag.Products)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">@product.ProductName</div>
+        <div class="panel-body">
+            Descriere produs: <strong>@product.Description</strong>
+            <br /> <span class="label label-success">@product.Date</span>
+            <br /> <i class="glyphicon glyphicon-globe"></i> @product.Category.CategoryName
+            <br /> <i class="glyphicon glyphicon-globe"></i> @product.Animal.Species
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-sm btn btn-success" href="/Products/Show/@product.ProductID">
+                Afisare produs
+            </a>
+        </div>
+    </div>
+}
+
+<a class="btn btn-info" href="/Products/New">Adauga Produs</a>
+<br />
