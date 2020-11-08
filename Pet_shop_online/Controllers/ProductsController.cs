@@ -125,7 +125,7 @@ namespace Pet_shop_online.Controllers
                 {
                     product = requestProduct;
                     db.SaveChanges();
-                    TempData["message"] = "Produsul a fost modificat!";
+                    TempData["message"] = "Produsul a fost modificat cu succes!";
                     return RedirectToAction("Index");
                 }
 
@@ -146,6 +146,7 @@ namespace Pet_shop_online.Controllers
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
+            TempData["message"] = "Produsul a fost sters!";
             return RedirectToAction("Index");
         }
     }

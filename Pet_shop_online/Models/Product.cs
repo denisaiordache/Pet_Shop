@@ -13,6 +13,7 @@ namespace Pet_shop_online.Models
         public int ProductID { get; set; }
         [Required]
         public string ProductName { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [Required]
         public int Stock { get; set; }

@@ -190,10 +190,10 @@
     <Content Include="Views\Products\Show.cshtml" />
     <Content Include="Views\Products\New.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
