@@ -6,7 +6,7 @@
 <form method="post" action="/Products/Edit/@Model.ProductID">
     @Html.HttpMethodOverride(HttpVerbs.Put)
 
-    @Html.Hidden("ProductID");
+    @Html.Hidden("ProductID")
 
     @Html.Label("ProductName", "Denumire Produs")
     <br />
@@ -21,12 +21,12 @@
 
     @Html.Label("Price", "Pret produs")
     <br />
-    @Html.EditorFor(m => m.Price)
+    @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })
     <br /><br />
 
     @Html.Label("Stock", "Cantitate produs")
     <br />
-    @Html.EditorFor(m => m.Stock)
+    @Html.EditorFor(m => m.Stock, new { htmlAttributes = new { @class = "form-control" } })
     <br /><br />
 
     @Html.Label("Selectati categoria")
