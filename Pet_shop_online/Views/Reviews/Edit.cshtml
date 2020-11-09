@@ -1,0 +1,11 @@
+﻿@model Pet_shop_online.Models.Review
+
+<h2>Editare Review</h2>
+<form method="post" action="/Reviews/Edit/@Model.ReviewID">
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    @Html.Label("Content", "Continut Review")
+    <br />
+    @Html.EditorFor(m => m.Content, new { htmlAttributes = new { @class = "form-control" } })
+    <br />
+    <button class="btn btn-success" type="submit">Editeaza Review</button>
+</form>

@@ -128,7 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,7 +144,7 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderLine.cs" />
     <Compile Include="Models\Product.cs" />
@@ -197,7 +197,7 @@
     <Content Include="Views\Products\Show.cshtml" />
     <Content Include="Views\Products\New.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Reviews\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />

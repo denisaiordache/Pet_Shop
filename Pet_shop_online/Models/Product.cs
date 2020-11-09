@@ -23,7 +23,7 @@ namespace Pet_shop_online.Models
         public int CategoryID { get; set; }
         public int AnimalID { get; set; }
 
-        public virtual ICollection <Comment>Comments { get; set; }
+        public virtual ICollection <Review> Reviews { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<OrderLine> OrderLines { get; set; }
         public virtual ICollection<CartLine> CartLines { get; set; }

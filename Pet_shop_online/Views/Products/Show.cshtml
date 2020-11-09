@@ -32,39 +32,41 @@
 <br />
 <br />
 <hr />
-@if (ViewBag.Product.Comments.Count == 1)
+@if (ViewBag.Product.Reviews.Count == 1)
 {
-    <h3>1 comentariu</h3>
+<h3>1 review</h3>
 }
-else if (ViewBag.Product.Comments.Count == 0)
+else if (ViewBag.Product.Reviews.Count == 0)
 {
-    <h3>Niciun comentariu</h3>
+<h3>Niciun review</h3>
 }
-else if (ViewBag.Product.Comments.Count < 20)
+else if (ViewBag.Product.Reviews.Count < 20)
 {
-    <h3>@ViewBag.Product.Comments.Count comentarii</h3>
+<h3>@ViewBag.Product.Reviews.Count review-uri</h3>
 }
 else
 {
-    <h3>@ViewBag.Product.Comments.Count de comentarii</h3>
+    <h3>@ViewBag.Product.Reviews.Count de review-uri</h3>
 }
 
 <br /><br />
-@foreach (var comm in ViewBag.Product.Comments)
+@foreach (var review in ViewBag.Product.Reviews)
 {
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div>
-                    <p>@comm.Content</p>
-                    <small class="pull-right">@comm.Date</small>
+                    <strong>@review.User.Username</strong>
+                    
+                    <p>@review.Content</p>
+                    <small class="pull-right">@review.Date</small>
                 </div>
                 <div style="display: inline-block; float : left; margin-right: 15px">
-                    <a class="glyphicon glyphicon-pencil" href="/Comments/Edit/@comm.CommentID"></a>
+                    <a class="glyphicon glyphicon-pencil" href="/Reviews/Edit/@review.ReviewID"></a>
                 </div>
                 <div style="display: inline-block; float : left">
-                    <form method="post" action="/Comments/Delete/@comm.CommentID">
+                    <form method="post" action="/Reviews/Delete/@review.ReviewID">
                         @Html.HttpMethodOverride(HttpVerbs.Delete)
                         <button class="glyphicon glyphicon-trash" style="border: none; background: transparent" type="submit"></button>
                     </form>
@@ -82,14 +84,14 @@ else
         </div>
         <div class="col-md-8">
             <div class="panel">
-                <form method="post" action="/Comments/New">
+                <form method="post" action="/Reviews/New">
                     <div class="panel-body">
                         <input type="hidden" name="ProductID" value="@ViewBag.Product.ProductID" />
-                        <label>Continut comentariu</label>
+                        <label>Continut review</label>
                         <br />
                         <textarea class="form-control" name="Content"></textarea>
                         <br />
-                        <button class="btn btn-success " type="submit">Adauga comentariu</button>
+                        <button class="btn btn-success " type="submit">Adauga review</button>
                     </div>
                 </form>
             </div>

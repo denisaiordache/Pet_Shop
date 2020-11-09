@@ -31,6 +31,7 @@ namespace Pet_shop_online.Models
         public virtual Cart Cart { get; set; }
 
         public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
     }
