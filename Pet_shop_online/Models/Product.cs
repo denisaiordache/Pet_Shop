@@ -24,10 +24,16 @@ namespace Pet_shop_online.Models
         public int AnimalID { get; set; }
 
         public virtual ICollection <Comment>Comments { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<OrderLine> OrderLines { get; set; }
+        public virtual ICollection<CartLine> CartLines { get; set; }
+
         public virtual Category Category { get; set; }
         public virtual Animal Animal { get; set; }
+
         public IEnumerable<SelectListItem> Categories { get; set; }
         public IEnumerable<SelectListItem> Animals { get; set; }
+
 
 
     }
