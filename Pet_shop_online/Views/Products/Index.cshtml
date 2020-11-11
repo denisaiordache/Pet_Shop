@@ -2,7 +2,7 @@
 <h2>Produse</h2>
 <h1>@ViewBag.Message</h1>
 <a class="btn btn-primary" href="/Categories/Index">Afisare categorii</a>
-<a class="btn btn-primary" href="/Products/New">Adauga produs</a>
+
 <br />
 @foreach (var product in ViewBag.Products)
 {
@@ -27,4 +27,6 @@
         </div>
     </div>
 }
+
+    <a class="btn btn-primary" href="/Products/New">Adauga produs</a>
 
