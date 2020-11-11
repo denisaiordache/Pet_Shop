@@ -1,0 +1,19 @@
+﻿
+@model Pet_shop_online.Models.Category
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Categories"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <br />
+    @Html.HiddenFor(m => m.CategoryID)
+
+    @Html.Label("CategoryName", "Denumire categorie")
+    <br />
+    @Html.EditorFor(m =>m.CategoryName)
+    
+    <br />
+    <button class="btn btn-sm btn-success" type="submit">Editeaza categorie</button>
+}
+
+
+

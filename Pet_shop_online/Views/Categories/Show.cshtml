@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Show";
+}
+
+<h3>Afisare categorie:</h3>
+<p>@ViewBag.Category.CategoryName</p>
+
+<a class="btn btn-success pull-left" href="/Categories/Edit/@ViewBag.Category.CategoryID">Editeaza categoria</a>
+<form method="post" action="/Categories/Delete/@ViewBag.Category.CategoryID">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-danger pull-right" type="submit">Elimina Categoria</button>
+</form>
+
+
