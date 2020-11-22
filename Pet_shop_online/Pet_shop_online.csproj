@@ -202,6 +202,7 @@
     <Content Include="Views\Categories\Show.cshtml" />
     <Content Include="Views\Categories\New.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Shared\ProductInfo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

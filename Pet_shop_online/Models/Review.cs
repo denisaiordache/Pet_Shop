@@ -10,7 +10,7 @@ namespace Pet_shop_online.Models
     {
         [Key]
         public int ReviewID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Continutul review-ului nu poate fi gol!")]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public DateTime Date { get; set; }

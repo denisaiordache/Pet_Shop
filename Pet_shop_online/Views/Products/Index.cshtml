@@ -4,22 +4,10 @@
 
 
 <br />
-@foreach (var product in ViewBag.Products)
+@foreach (Pet_shop_online.Models.Product product in ViewBag.Products)
 {
     <div class="panel panel-default">
-        <div class="panel-heading">@product.ProductName</div>
-        <div class="panel-body">
-            Descriere produs: <strong>@product.Description</strong>
-            <br />
-            <strong>@product.Price Lei</strong>
-            <br />
-            <i class="glyphicon glyphicon-list"></i> @product.Category.CategoryName
-            <i class="glyphicon glyphicon-heart-empty"></i> @product.Animal.Species
-            <br />
-            <span class="label label-info">@product.Stock Produse disponibile</span>
-            <span class="label label-success">@product.Date</span>
-        </div>
-        <br />
+        @Html.Partial("ProductInfo", product)
         <div class="panel-footer">
             <a class="btn btn-sm btn btn-success" href="/Products/Show/@product.ProductID">
                 Afisare produs

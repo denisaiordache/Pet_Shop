@@ -1,7 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Show";
-}
+﻿@model Pet_shop_online.Models.Product
 
 <h2>Afisare Produs</h2>
 <br />
@@ -9,48 +6,40 @@
 <br />
 
 <div class="panel panel-default">
-    <div class="panel-heading">@ViewBag.Product.ProductName</div>
-    <div class="panel-body">
-        Descriere produs: <strong>@ViewBag.Product.Description</strong>
-        <br />
-        <strong>@ViewBag.Product.Price Lei</strong>
-        <br />
-
-        <i class="glyphicon glyphicon-list"></i> @ViewBag.Category.CategoryName
-        <i class="glyphicon glyphicon-heart-empty"></i> @ViewBag.Animal.Species
-        <br />
-        <span class="label label-info">@ViewBag.Product.Stock Produse disponibile</span>
-        <span class="label label-success">@ViewBag.Product.Date</span>
-        <hr>
-        <a class="btn btn-success pull-left" href="/Products/Edit/@ViewBag.Product.ProductID">Modifica produs</a>
-        <form method="post" action="/Products/Delete/@ViewBag.Product.ProductID">
+    @Html.Partial("ProductInfo", Model)
+    <div class="panel-footer">
+        <a class="btn btn-success pull-left" href="/Products/Edit/@Model.ProductID">Modifica produs</a>
+        
+        @using (Html.BeginForm(actionName: "Delete", controllerName: "Products", method: FormMethod.Post, routeValues: new { id = @Model.ProductID }))
+        {
             @Html.HttpMethodOverride(HttpVerbs.Delete)
             <button class="btn btn-danger pull-right" type="submit">Elimina produs</button>
-        </form>
+        }
+        <div class="clearfix"></div>
     </div>
 </div>
 <br />
 <br />
 <hr />
-@if (ViewBag.Product.Reviews.Count == 1)
+@if (Model.Reviews.Count == 1)
 {
 <h3>1 review</h3>
 }
-else if (ViewBag.Product.Reviews.Count == 0)
+else if (Model.Reviews.Count == 0)
 {
 <h3>Niciun review</h3>
 }
-else if (ViewBag.Product.Reviews.Count < 20)
+else if (Model.Reviews.Count < 20)
 {
-<h3>@ViewBag.Product.Reviews.Count review-uri</h3>
+<h3>@Model.Reviews.Count review-uri</h3>
 }
 else
 {
-    <h3>@ViewBag.Product.Reviews.Count de review-uri</h3>
+    <h3>@Model.Reviews.Count de review-uri</h3>
 }
 
 <br /><br />
-@foreach (var review in ViewBag.Product.Reviews)
+@foreach (var review in Model.Reviews)
 {
     <div class="container">
         <div class="row">
@@ -86,12 +75,14 @@ else
             <div class="panel">
                 <form method="post" action="/Reviews/New">
                     <div class="panel-body">
-                        <input type="hidden" name="ProductID" value="@ViewBag.Product.ProductID" />
+                        <input type="hidden" name="ProductID" value="@Model.ProductID" />
                         <label>Continut review</label>
                         <br />
                         <textarea class="form-control" name="Content"></textarea>
                         <br />
                         <button class="btn btn-success " type="submit">Adauga review</button>
+
+
                     </div>
                 </form>
             </div>

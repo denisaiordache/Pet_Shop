@@ -107,11 +107,8 @@ namespace Pet_shop_online.Controllers
         public ActionResult Show (int id)
         {
             Product product = db.Products.Find(id);
-            ViewBag.Product = product;
-            ViewBag.Category = product.Category;
-            ViewBag.Animal = product.Animal;
 
-            return View();
+            return View(product);
         }
 
         [HttpGet]

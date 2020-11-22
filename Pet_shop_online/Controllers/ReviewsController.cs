@@ -34,10 +34,13 @@ namespace Pet_shop_online.Controllers
 
 
             try
-            {
-                db.Reviews.Add(rev);
-                db.SaveChanges();
-                return Redirect("/Products/Show/" + rev.ProductID);
+            { 
+                
+                 db.Reviews.Add(rev);
+                 db.SaveChanges();
+                 return Redirect("/Products/Show/" + rev.ProductID);
+                
+               
             }
 
             catch (Exception e)
@@ -59,13 +62,24 @@ namespace Pet_shop_online.Controllers
         {
             try
             {
-                Review rev = db.Reviews.Find(id);
-                if (TryUpdateModel(rev))
+                if (ModelState.IsValid)
                 {
-                    rev.Content = requestReview.Content;
-                    db.SaveChanges();
+                    Review rev = db.Reviews.Find(id);
+                    if (TryUpdateModel(rev))
+                    {
+                        rev.Content = requestReview.Content;
+                        db.SaveChanges();
+                        return Redirect("/Products/Show/"+ rev.ProductID);
+                    }
+                    else
+                    {
+                        return View(requestReview);
+                    }
                 }
-                return Redirect("/Products/Show/" + rev.ProductID);
+                else
+                {
+                    return View(requestReview);
+                }
             }
             catch (Exception e)
             {
