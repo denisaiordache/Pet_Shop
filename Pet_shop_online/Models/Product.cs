@@ -11,16 +11,22 @@ namespace Pet_shop_online.Models
     {
         [Key]
         public int ProductID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Numele produsului este obligatoriu!")]
         public string ProductName { get; set; }
         [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Descrierea produsului este obligatorie!")]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Cantitatea produsului trebuie sa fie specificata!")]
+        [Range(1, int.MaxValue, ErrorMessage = "Cantitatea produsului trebuie sa fie cel putin egala cu 1!")]
         public int Stock { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Pretul produsului trebuie sa fie specificat!")]
+        [Range(0.05, float.MaxValue, ErrorMessage = "Pretul produsului trebuie sa fie cel putin egal cu 0.05!")]
         public float Price { get; set; }
         public DateTime Date { get; set; }
+
+        [Required(ErrorMessage = "Categoria trebuie selectata!")]
         public int CategoryID { get; set; }
+        [Required(ErrorMessage = "Tipul animalului trebuie selectat!")]
         public int AnimalID { get; set; }
 
         public virtual ICollection <Review> Reviews { get; set; }

@@ -10,7 +10,7 @@ namespace Pet_shop_online.Models
     {
         [Key]
         public int CategoryID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Numele categoriei este obligatoriu!")]
         public String CategoryName { get; set; }
 
         public virtual ICollection<Product>Products { get; set; }

@@ -79,13 +79,24 @@ namespace Pet_shop_online.Controllers
         public ActionResult New(Product product)
         {
             product.Date = DateTime.Now;
+            product.Categories = GetAllCategories();
+            product.Animals = GetAllAnimals();
 
             try
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                TempData["message"] = "Produsul a fost adaugat cu succes!"; 
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    TempData["message"] = "Produsul a fost adaugat cu succes!";
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    return View(product);
+                }
+
             }
             catch (Exception e)
             {
@@ -118,21 +129,35 @@ namespace Pet_shop_online.Controllers
         public ActionResult Edit (int id, Product requestProduct)
         {
 
+            requestProduct.Categories = GetAllCategories();
+            requestProduct.Animals = GetAllAnimals();
+
             try
             {
-                Product product = db.Products.Find(id);
-                if (TryUpdateModel(product))
+                if (ModelState.IsValid)
                 {
-                    product = requestProduct;
-                    db.SaveChanges();
-                    TempData["message"] = "Produsul a fost modificat cu succes!";
-                    return RedirectToAction("Index");
+                    Product product = db.Products.Find(id);
+                    if (TryUpdateModel(product))
+                    {
+                        product = requestProduct;
+                        db.SaveChanges();
+                        TempData["message"] = "Produsul a fost modificat cu succes!";
+                        return RedirectToAction("Index");
+                    }
+
+                    else
+                    {
+                        return View(requestProduct);
+                    }
                 }
 
-                return View(requestProduct);
+                else
+                {
+                    return View(requestProduct);
+                }
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View();
             }

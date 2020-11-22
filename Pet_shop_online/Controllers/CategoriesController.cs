@@ -45,10 +45,19 @@ namespace Pet_shop_online.Controllers
         {
             try
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                TempData["message"] = "Categoria a fost adaugata cu succes!";
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    TempData["message"] = "Categoria a fost adaugata cu succes!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(category);
+                }
+
+
             }
             catch (Exception e)
             {
@@ -71,16 +80,25 @@ namespace Pet_shop_online.Controllers
 
             try
             {
-                Category category = db.Categories.Find(id);
-                if (TryUpdateModel(category))
+                if (ModelState.IsValid)
                 {
-                    category = requestCategory;
-                    db.SaveChanges();
-                    TempData["message"] = "Categoria a fost modificata cu succes!";
-                    return RedirectToAction("Index");
+                    Category category = db.Categories.Find(id);
+                    if (TryUpdateModel(category))
+                    {
+                        category = requestCategory;
+                        db.SaveChanges();
+                        TempData["message"] = "Categoria a fost modificata cu succes!";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View(requestCategory);
+                    }
                 }
-
-                return View(requestCategory);
+                else
+                {
+                    return View(requestCategory);
+                }
             }
 
             catch (Exception e)
